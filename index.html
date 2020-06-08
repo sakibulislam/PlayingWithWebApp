@@ -1,0 +1,283 @@
+<html>
+    <head>
+        <title>CSE 391 Assignemnt 2</title>
+        
+       <link type="text/css" rel="stylesheet" href="stylesheet.css" />
+    </head>
+    
+    <script type="text/javascript">
+	 function greenFunction(){
+            document.getElementById("Quotes").style.backgroundColor = "rgb(102, 189, 1)";
+            document.getElementById("Quotes").style.fontFamily = "Comic Sans MS, cursive, sans-serif";
+        }
+        
+        function yellowFunction(){
+            document.getElementById("Quotes").style.backgroundColor = "rgb(230, 230, 0)";
+            document.getElementById("Quotes").style.fontFamily = "Monaco";
+        }
+        function blueFunction(){
+            document.getElementById("Quotes").style.backgroundColor = "rgb(4, 29, 193)";
+            document.getElementById("Quotes").style.fontFamily = "Helvetica";
+        }
+        
+        function redFunction(){
+            document.getElementById("Quotes").style.backgroundColor = "rgb(249, 2, 2)";
+            document.getElementById("Quotes").style.fontFamily = "fantasy";
+        }
+        
+		
+		
+		
+		  function converter(){
+            var number=document.getElementById("number").value;
+            if(isNaN(number)){
+               alert("Enter Numbers Only");
+                document.getElementById("number").value="";
+            }
+            else{
+                var next=document.getElementById("contRols").value;
+                if(next == "kg"){
+                    var ans=number*.4536+" Kilograms";
+                    document.getElementById("answer").innerHTML=ans;
+                }
+                else{
+                    var ans=number*2.2046;
+                    document.getElementById("answer").innerHTML=ans+" Pounds";
+                }
+            }
+        }
+		
+		
+		
+		
+		
+		function keyPress(){
+           
+           document.getElementById("solution").style.display = "block";
+           
+           var numbers=document.getElementById("numbers");
+		   
+           var arrayOfNumbers = numbers.value.split(",");
+           
+           for (var i=0; i<arrayOfNumbers.length; i++){
+                arrayOfNumbers[i] = parseInt(arrayOfNumbers[i]); 
+           }
+           
+            Array.prototype.max = function() 
+            {
+            return Math.max.apply(null, this);
+            }
+
+            Array.prototype.min = function() 
+            {
+            return Math.min.apply(null, this);
+            }
+
+            var sum = 0;
+            for (var i=0; i<arrayOfNumbers.length; i++)
+            {
+                sum = sum+ arrayOfNumbers[i];
+            }
+           
+            var average = sum/arrayOfNumbers.length;
+           
+           var reverse = "";
+
+            for (var i=arrayOfNumbers.length-1; i>=0; i--)
+            {
+                reverse = reverse + arrayOfNumbers[i] + ",";
+            }
+           
+           document.getElementById("maxval").innerHTML="Max: "+arrayOfNumbers.max();
+           document.getElementById("minval").innerHTML="Min: "+arrayOfNumbers.min();
+           document.getElementById("sumval").innerHTML="Sum: "+sum;
+           document.getElementById("avgval").innerHTML="Average: "+average;
+           document.getElementById("reverseOrderval").innerHTML="Reverse: "+reverse;
+           
+           
+           
+       }
+		
+		
+		
+		
+		function Clear(){
+	document.getElementById("inputText").value="";
+}
+
+
+function Capitalize(){
+	if (document.getElementById("cap").value=="Capitalize"){
+		var upperstring=document.getElementById('inputText').value.toUpperCase();
+		document.getElementById('inputText').value=upperstring;
+		document.getElementById("cap").value="Lowercase";
+	}
+	else{
+		var lowerstring=document.getElementById('inputText').value.toLowerCase();
+		document.getElementById('inputText').value=lowerstring;
+		document.getElementById("cap").value="Capitalize";
+	}
+}
+
+function sortarray(){
+	var array=(document.getElementById("inputText").value).split("");
+	array.sort();
+	document.getElementById('inputText').value=array.join("");
+}
+
+function reversearray(){
+	var array=(document.getElementById("inputText").value).split("\n");
+	var newarray=[];
+
+	for(i=0;i<array.length;i++){
+		var line=array[i].split("");
+		newarray.push(line.reverse().join("").toString());
+	}
+	document.getElementById('inputText').value=newarray.join("\n");
+}
+
+function stripblank(){
+	var array=(document.getElementById("inputText").value).split("\n");
+	var newarray=[];
+	for(i=0;i<array.length;i++){
+		var line=array[i].split(" ");
+		newarray.push(line.join("").toString());
+	}
+	document.getElementById('inputText').value=newarray.join("\n");
+}
+
+function addnumbers(){
+	var array=(document.getElementById("inputText").value).split("\n");
+	var newarray=[];
+	for(i=0;i<array.length;i++){
+		var line=array[i].split(" ");
+		line.unshift(Math.floor((Math.random() * 10) + 1));
+		newarray.push(line.join(" ").toString());
+	}
+	document.getElementById('inputText').value=newarray.join("\n");
+}
+
+function shuffle(){
+	var array=(document.getElementById("inputText").value).split("");
+	for(i=array.length-1;i>0;i--){
+		var j=Math.floor(Math.random()*(i+1));
+		var temp=array[i];
+		array[i]=array[j];
+		array[j]=temp;
+	}
+	document.getElementById('inputText').value=array.join("");
+}
+
+		
+		
+		
+		
+		
+		
+		
+    </script>
+    
+    <body style='background: url("images/back.jpg") no-repeat center center fixed;background-size: cover;-moz-background-size: cover;-webkit-background-size: cover;-o-background-size: cover;'>
+        
+        <div class="overall">
+            <h1 align="center"><i><strong>Sakibul Islam</strong></i></h1>
+			
+            <div class="menu-bars">
+                <a href="index.html"><strong>Quotations Box</strong></a>
+               
+            </div>
+        
+            <div class="Quotes" id="Quotes">
+                <script type="text/javascript">
+
+                    var quote=["Every day is a journey, and the journey itself is home." , "We must be willing to let go of the life we have planned, so as to have the life that is waiting for us." , "Human beings, by changing the inner attitudes of their minds, can change the outer aspects of their lives." , "A person reveals his character by nothing so clearly as the joke he resents." , "Only I can change my life. No one can do it for me." , "Misfortune shows those who are not really friends." , "He felt that his whole life was some kind of dream and he sometimes wondered whose it was and whether they were enjoying it." , "It is possible to store the mind with a million facts and still be entirely uneducated."];
+                    var quoteNumber=Math.floor((Math.random() * quote.length) + 0); 
+                    document.write(quote[quoteNumber]); 
+                </script>
+            </div>
+
+            <div class="buttons">
+			<button class="green" name="green" onclick="greenFunction()"></button>
+                <button class="yellow" name="yellow" onclick="yellowFunction()"></button>
+                <button class="blue" name="blue" onclick="blueFunction()"></button>
+                <button class="red" name="red" onclick="redFunction()"></button>  
+            </div>
+			
+			
+			<div class="menu-bars">
+               <a href="index.html"><strong><h3>Hero Conveter</h3></strong></a>
+            </div>
+            <div class="heroconveter" id="heroconveter">
+				<h1><strong> Converter <strong></h1>
+				<input type="text" id="number" placeholder="Enter number..">
+              
+                <select id="contRols">
+                  <option value="kg">Pound to KG</option>
+                  <option value="pound">KG to Pound</option>
+                </select> 
+                <button value="Go" onclick="converter()">Go</button> 
+                <span id="answer"></span>
+            </div>
+			
+            
+			
+			
+			 <div class="menu-bars">
+               <a href="index.html"><strong><h4>Max, Min, Sum, Average and Reverse Order</h4></strong></a>
+            </div>
+			
+			<div class="max-min" id="max-min">
+                <h1><strong> Input Serial Numbers <strong></h1>
+                <input type="text" id="numbers" placeholder="Enter the numbers with , in between" onkeyup="keyPress()"> 
+                
+                <div id="solution">
+                    <div id="max">
+                        <h4 id="maxval"></h3>
+                    </div>
+
+                    <div id="min">
+                        <h4 id="minval"></h3>
+                    </div>
+
+                    <div id="sum">
+                        <h4 id="sumval"></h3>
+                    </div>
+
+                    <div id="avg">
+                        <h4 id="avgval"></h3>
+                    </div>
+
+                    <div id="reverseOrder">
+                        <h4 id="reverseOrderval"></h3>
+                    </div>
+                </div>
+               
+            </div> 
+			
+	  <div class="menu-bars">
+               <a href="index.html"><strong><h3> Magic..!</h3></strong></a>
+            </div>
+	  
+	    <div class="magic">
+			
+		  <div id="txtarea">
+		  <h1><strong> Input any Text/Number or Both <strong></h1>
+            <textarea name="input" id="inputText" rows="4" cols="50  text-align: center"></textarea>
+		  </div>
+
+
+
+<input type="button" id="cap" class="textAreaButtons" value="Capitalize" onClick="Capitalize()" >
+<input type="button" class="textAreaButtons" value="Sort" onClick="sortarray()">
+<input type="button" class="textAreaButtons" value="Reverse" onClick="reversearray()">
+<input type="button" class="textAreaButtons" value="Add Numbers" onClick="addnumbers()">
+<input type="button" class="textAreaButtons" value="Strip Blank" onClick="stripblank()">
+<input type="button" class="textAreaButtons" value="Shuffle" onClick="shuffle()">
+<input type="button" class="textAreaButtons" value="Clear it" onClick="Clear()">
+	  
+	   
+        </div>
+		</div>
+	
+    </body>
+</html>
